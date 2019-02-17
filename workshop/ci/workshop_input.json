@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[taskcat_getaz_2]"
+    },
+    {
+        "ParameterKey": "KeyPairName",
+        "ParameterValue": "enter-your-keypair"
+    },
+    {
+        "ParameterKey": "QSS3BucketName",
+        "ParameterValue": "$[taskcat_autobucket]"
+    }
+]
