@@ -4,11 +4,16 @@
         "ParameterValue": "$[taskcat_getaz_2]"
     },
     {
+        "ParameterKey": "QSS3BucketName",
+        "ParameterValue": "$[taskcat_autobucket]"
+    },
+    {
         "ParameterKey": "KeyPairName",
         "ParameterValue": "enter-your-keypair"
     },
     {
-        "ParameterKey": "QSS3BucketName",
-        "ParameterValue": "$[taskcat_autobucket]"
+        "ParameterKey": "RemoteAccessCIDR",
+        "ParameterValue": "0.0.0.0/0"
     }
+
 ]
