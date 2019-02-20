@@ -11,6 +11,16 @@
           Ref: InstanceType
         KeyPairName:
           Ref: KeyPairName
+        PrivateSubnet1ID:
+          Fn::GetAtt:
+          - VPCStack
+          - Outputs.PrivateSubnet1ID
+        PrivateSubnet2ID:
+          Fn::GetAtt:
+          - VPCStack
+          - Outputs.PrivateSubnet2ID
+        QSS3BucketName:
+          Ref: QSS3BucketName
         PublicSubnet1ID:
           Fn::GetAtt:
           - VPCStack
@@ -22,10 +32,16 @@
         QSS3BucketName:
           Ref: QSS3BucketName
         QSS3KeyPrefix:
-          Fn::Sub: ${QSS3KeyPrefix}submodules/quickstart-linux-bastion/
+          Ref: QSS3KeyPrefix
         RemoteAccessCIDR:
           Ref: RemoteAccessCIDR
+        WebserverCIDR:
+          Ref: WebserverCIDR
         VPCID:
           Fn::GetAtt:
           - VPCStack
           - Outputs.VPCID
+        VPCIDR:
+          Fn::GetAtt:
+          - VPCStack
+          - Outputs.VPCIDR
