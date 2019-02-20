@@ -4,8 +4,20 @@
         "ParameterValue": "$[taskcat_getaz_2]"
     },
     {
+        "ParameterKey": "EmailAddress",
+        "ParameterValue": "email@yourdomain.com"
+    },
+    {
         "ParameterKey": "KeyPairName",
-        "ParameterValue": "tonynv"
+        "ParameterValue": "cikey"
+    },
+    {
+        "ParameterKey": "RemoteAccessCIDR",
+        "ParameterValue": "0.0.0.0/0"
+    },
+    {
+        "ParameterKey": "WebserverCIDR",
+        "ParameterValue": "0.0.0.0/0"
     },
     {
         "ParameterKey": "QSS3BucketName",
