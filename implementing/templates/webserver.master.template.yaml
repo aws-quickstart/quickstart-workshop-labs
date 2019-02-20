@@ -19,8 +19,6 @@
           Fn::GetAtt:
           - VPCStack
           - Outputs.PrivateSubnet2ID
-        QSS3BucketName:
-          Ref: QSS3BucketName
         PublicSubnet1ID:
           Fn::GetAtt:
           - VPCStack
