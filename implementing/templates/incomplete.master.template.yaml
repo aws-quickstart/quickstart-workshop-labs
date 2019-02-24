@@ -31,6 +31,32 @@ Parameters:
     Default: t2.medium
     Description: "EC2 instance type"
     Type: String
+  BastionAMIOS:
+    AllowedValues:
+    - Amazon-Linux-HVM
+    - CentOS-7-HVM
+    - Ubuntu-Server-14.04-LTS-HVM
+    - Ubuntu-Server-16.04-LTS-HVM
+    Default: Amazon-Linux-HVM
+    Description: The Linux distribution for the AMI to be used for the bastion instances
+    Type: String
+  BastionInstanceType:
+    AllowedValues:
+    - t2.nano
+    - t2.micro
+    - t2.small
+    - t2.medium
+    - t2.large
+    - m3.large
+    - m3.xlarge
+    - m3.2xlarge
+    - m4.large
+    - m4.xlarge
+    - m4.2xlarge
+    - m4.4xlarge
+    Default: t2.micro
+    Description: Amazon EC2 instance type for the bastion instances
+    Type: String
   KeyPairName:
     ConstraintDescription: "Name of an existing EC2 KeyPair."
     Type: "AWS::EC2::KeyPair::KeyName"
