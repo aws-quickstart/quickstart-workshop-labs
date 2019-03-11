@@ -3,4 +3,5 @@ Outputs:
     Description: "The web server URL"
     Value:
       Fn::GetAtt:
-      - WorkloadStack.Outputs.URL
+      - WorkloadStack
+      - Outputs.URL
