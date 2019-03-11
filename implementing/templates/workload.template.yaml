@@ -171,23 +171,13 @@ Resources:
             - config-webserver
             - run_service-webserver
         config-webserver:
-          files:
-            /var/tmp/nginx.conf:
-              source: !Sub 
-                - >-
-                  https://s3.amazonaws.com/${QSS3BucketName}/${QSS3KeyPrefix}scripts/ngnix.conf
-                - QSS3BucketName: !Ref QSS3BucketName
-                  QSS3KeyPrefix: !Ref QSS3KeyPrefix
-              mode: '000664'
-              owner: root
-              group: root
           packages:
             apt:
               nginx: []
         run_service-webserver:
           commands:
             start_weberver:
-              command: systemctl start nginx
+              command: /etc/init.d/nginx start
     Properties:
       KeyName: !Ref KeyPairName
       ImageId: !FindInMap 
