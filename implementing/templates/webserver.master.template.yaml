@@ -14,11 +14,11 @@
         PrivateSubnet1ID:
           Fn::GetAtt:
           - VPCStack
-          - Outputs.PrivateSubnet1ID
+          - Outputs.PrivateSubnet1AID
         PrivateSubnet2ID:
           Fn::GetAtt:
           - VPCStack
-          - Outputs.PrivateSubnet2ID
+          - Outputs.PrivateSubnet2AID
         PublicSubnet1ID:
           Fn::GetAtt:
           - VPCStack
@@ -39,7 +39,7 @@
           Fn::GetAtt:
           - VPCStack
           - Outputs.VPCID
-        VPCIDR:
+        VPCCIDR:
           Fn::GetAtt:
           - VPCStack
-          - Outputs.VPCIDR
+          - Outputs.VPCCIDR
