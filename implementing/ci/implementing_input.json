@@ -12,10 +12,6 @@
         "ParameterValue": "cikey"
     },
     {
-        "ParameterKey": "RemoteAccessCIDR",
-        "ParameterValue": "0.0.0.0/0"
-    },
-    {
         "ParameterKey": "WebserverCIDR",
         "ParameterValue": "0.0.0.0/0"
     },

@@ -31,8 +31,6 @@
           Ref: QSS3BucketName
         QSS3KeyPrefix:
           Ref: QSS3KeyPrefix
-        RemoteAccessCIDR:
-          Ref: RemoteAccessCIDR
         WebserverCIDR:
           Ref: WebserverCIDR
         VPCID:
