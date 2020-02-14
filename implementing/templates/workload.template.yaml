@@ -139,13 +139,13 @@ Resources:
       MaxSize: '8'
       TargetGroupARNs:
         - !Ref ALBTargetGroup
-      NotificationConfiguration:
-        TopicARN: !Ref NotificationTopic
-        NotificationTypes:
-          - 'autoscaling:EC2_INSTANCE_LAUNCH'
-          - 'autoscaling:EC2_INSTANCE_LAUNCH_ERROR'
-          - 'autoscaling:EC2_INSTANCE_TERMINATE'
-          - 'autoscaling:EC2_INSTANCE_TERMINATE_ERROR'
+      NotificationConfigurations:
+        - TopicARN: !Ref NotificationTopic
+          NotificationTypes:
+            - 'autoscaling:EC2_INSTANCE_LAUNCH'
+            - 'autoscaling:EC2_INSTANCE_LAUNCH_ERROR'
+            - 'autoscaling:EC2_INSTANCE_TERMINATE'
+            - 'autoscaling:EC2_INSTANCE_TERMINATE_ERROR'
     CreationPolicy:
       ResourceSignal:
         Timeout: PT15M
@@ -247,14 +247,14 @@ Resources:
     Properties:
       AdjustmentType: ChangeInCapacity
       AutoScalingGroupName: !Ref WebServerGroup
-      Cooldown: 60
+      Cooldown: '60'
       ScalingAdjustment: 1
   WebServerScaleDownPolicy:
     Type: 'AWS::AutoScaling::ScalingPolicy'
     Properties:
       AdjustmentType: ChangeInCapacity
       AutoScalingGroupName: !Ref WebServerGroup
-      Cooldown: 60
+      Cooldown: '60'
       ScalingAdjustment: -1
   WebServerCPUAlarmHigh:
     Type: 'AWS::CloudWatch::Alarm'
