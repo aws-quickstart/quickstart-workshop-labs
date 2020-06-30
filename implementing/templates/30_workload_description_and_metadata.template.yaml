@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This workload template deploys an ASG behind an ELB load balancer in
+  two private subnets. The cluster is configured to use an S3 bucket for storage **WARNING**
+  This template creates EC2 instances and related resources. You will be billed for
+  the AWS resources used if you create a stack from this template.
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+    - Label:
+        default: Network configuration
+      Parameters:
+      - VPCID
+      - PrivateSubnet1ID
+      - PrivateSubnet2ID
+      - PublicSubnet1ID
+      - PublicSubnet2ID
+    - Label:
+        default: Amazon EC2 configuration
+      Parameters:
+      - KeyPairName
+      - BastionSecurityGroupID
+      - WorkloadInstanceType
+    - Label:
+        default: Workload nodes configuration
+      Parameters:
+      - WorkloadNodesMinSize
+      - WorkloadNodesMaxSize
+      - WorkloadNodesDesiredCapacity
+      - OperatorEmail
+    - Label:
+        default: Workload storage configuration
+      Parameters:
+      - S3BucketName
+    - Label:
+        default: AWS Quick Start configuration
+      Parameters:
+      - QSS3BucketName
+      - QSS3BucketRegion
+      - QSS3KeyPrefix
+    ParameterLabels:
+      BastionSecurityGroupID:
+        default: Bastion security group ID
+      KeyPairName:
+        default: SSH key name
+      OperatorEmail:
+        default: Operator email
+      PrivateSubnet1ID:
+        default: Private subnet 1 ID
+      PrivateSubnet2ID:
+        default: Private subnet 2 ID
+      PublicSubnet1ID:
+        default: Public subnet 1 ID
+      PublicSubnet2ID:
+        default: Public subnet 2 ID
+      QSS3BucketName:
+        default: Quick Start S3 bucket name
+      QSS3BucketRegion:
+        default: Quick Start S3 bucket region
+      QSS3KeyPrefix:
+        default: Quick Start S3 key prefix
+      S3BucketName:
+        default: S3 bucket name
+      VPCID:
+        default: VPC ID
+      WorkloadInstanceType:
+        default: Workload servers instance type
+      WorkloadNodesDesiredCapacity:
+        default: Workload nodes desired capacity
+      WorkloadNodesMaxSize:
+        default: Workload nodes max size
+      WorkloadNodesMinSize:
+        default: Workload nodes min size
