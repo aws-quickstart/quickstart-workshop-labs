@@ -5,5 +5,6 @@
       KeyPairName: YOUR-KEYPAIR-HERE
       WebserverCIDR: "0.0.0.0/0"
       QSS3KeyPrefix: "qs-workshop/"
+      QSS3BucketRegion: "$[taskcat_current_region]"
       QSS3BucketName: "$[taskcat_autobucket]"
 
