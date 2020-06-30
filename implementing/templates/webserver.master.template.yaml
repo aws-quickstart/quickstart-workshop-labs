@@ -3,7 +3,10 @@
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL:
-        Fn::Sub: https://${QSS3BucketName}.s3.amazonaws.com/${QSS3KeyPrefix}templates/workload.template.yaml
+        !Sub
+          - https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/workload.template.yaml
+          - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+            S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
         EmailAddress:
           Ref: EmailAddress
@@ -29,6 +32,8 @@
           - Outputs.PublicSubnet2ID
         QSS3BucketName:
           Ref: QSS3BucketName
+        QSS3BucketRegion:
+          Ref: QSS3BucketRegion
         QSS3KeyPrefix:
           Ref: QSS3KeyPrefix
         WebserverCIDR:

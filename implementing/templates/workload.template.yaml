@@ -53,6 +53,10 @@ Parameters:
       include numbers, lowercase letters, uppercase letters, and hyphens (-). It
       cannot start or end with a hyphen (-).
     Type: String
+  QSS3BucketRegion:
+    Default: 'us-east-1'
+    Description: 'The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.'
+    Type: String
   QSS3KeyPrefix:
     AllowedPattern: '^[0-9a-zA-Z-/]*$'
     ConstraintDescription: >-
@@ -118,9 +122,7 @@ Mappings:
     us-west-2:
       US1604HVM: ami-ca89eeb2
 Conditions:
-  GovCloudCondition: !Equals 
-    - !Ref 'AWS::Region'
-    - us-gov-west-1
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
 Resources:
   NotificationTopic:
     Type: 'AWS::SNS::Topic'
@@ -210,7 +212,7 @@ Resources:
 
             }
 
-            S3URI=https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}
+            S3URI=https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}
 
             echo \'[Cloning: Load QuickStart Common Utils]\'
 
@@ -238,10 +240,8 @@ Resources:
             # Signal cfn-init (final check)
 
             [ $(qs_status) == 0 ] && cfn_success || cfn_fail
-          - S3Region: !If 
-              - GovCloudCondition
-              - s3-us-gov-west-1
-              - s3
+          - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+            S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
   WebServerScaleUpPolicy:
     Type: 'AWS::AutoScaling::ScalingPolicy'
     Properties:
