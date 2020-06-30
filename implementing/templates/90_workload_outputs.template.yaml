@@ -1,0 +1,7 @@
+Outputs:
+  ELBDNSName:
+    Description: ELB DNS Name
+    Value:
+      Fn::GetAtt:
+      - ElasticLoadBalancer
+      - DNSName
