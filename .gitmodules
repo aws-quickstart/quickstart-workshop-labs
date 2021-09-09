@@ -2,3 +2,6 @@
 	path = implementing/submodules/quickstart-aws-vpc
 	url = git@github.com:aws-quickstart/quickstart-aws-vpc.git
 	branch = master
+[submodule "cfn-workshop/submodules/quickstart-aws-vpc"]
+	path = cfn-workshop/submodules/quickstart-aws-vpc
+	url = https://github.com/aws-quickstart/quickstart-aws-vpc.git
