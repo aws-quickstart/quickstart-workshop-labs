@@ -156,7 +156,7 @@ Resources:
       Type: 'AWS::CloudFormation::Stack'
       Properties:
         TemplateURL:
-          !Sub https://${S3BucketName}.s3.${S3BucketRegion}.${AWS::URLSuffix}/${S3KeyPrefix}templates/public.workload.template.yaml
+          !Sub https://${S3BucketName}.s3.${S3BucketRegion}.${AWS::URLSuffix}/${S3KeyPrefix}templates/workload.template.yaml
         Parameters:
           InstanceType: !Ref InstanceType
           SSHLocation: !Ref SSHLocation
