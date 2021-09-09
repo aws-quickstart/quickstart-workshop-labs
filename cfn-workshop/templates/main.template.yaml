@@ -156,7 +156,7 @@ Resources:
       Type: 'AWS::CloudFormation::Stack'
       Properties:
         TemplateURL:
-          !Sub https://${S3BucketName}.s3.${S3BucketRegion}.${AWS::URLSuffix}/${S3KeyPrefix}templates/public.workload.template.yaml
+          !Sub https://${S3BucketName}.s3.${S3BucketRegion}.${AWS::URLSuffix}/${S3KeyPrefix}templates/private.workload.template.yaml
         Parameters:
           InstanceType: !Ref InstanceType
           SSHLocation: !Ref SSHLocation
@@ -164,6 +164,8 @@ Resources:
           OperatorEMail: !Ref OperatorEMail
           PublicSubnet1ID: !GetAtt VPCStack.Outputs.PublicSubnet1ID
           PublicSubnet2ID: !GetAtt VPCStack.Outputs.PublicSubnet2ID
+          PrivateSubnet1ID: !GetAtt VPCStack.Outputs.PrivateSubnet1AID
+          PrivateSubnet2ID: !GetAtt VPCStack.Outputs.PrivateSubnet2AID
           VPCID: !GetAtt VPCStack.Outputs.VPCID
 Outputs:
   URL:

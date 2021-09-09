@@ -164,6 +164,8 @@ Resources:
           OperatorEMail: !Ref OperatorEMail
           PublicSubnet1ID: !GetAtt VPCStack.Outputs.PublicSubnet1ID
           PublicSubnet2ID: !GetAtt VPCStack.Outputs.PublicSubnet2ID
+          PrivateSubnet1ID: !GetAtt VPCStack.Outputs.PrivateSubnet1AID
+          PrivateSubnet2ID: !GetAtt VPCStack.Outputs.PrivateSubnet2AID
           VPCID: !GetAtt VPCStack.Outputs.VPCID
 Outputs:
   URL:
