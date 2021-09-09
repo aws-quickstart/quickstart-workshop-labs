@@ -8,6 +8,45 @@ Description: >-
   web page. **WARNING** This template creates one or more Amazon EC2 instances
   and an Elastic Load Balancer. You will be billed for the AWS resources used if
   you create a stack from this template.
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+    - Label:
+        default: Network configuration
+      Parameters:
+      - VPCID
+      - PrivateSubnet1ID
+      - PrivateSubnet2ID
+      - PublicSubnet1ID
+      - PublicSubnet2ID
+    - Label:
+        default: Workload nodes configuration
+      Parameters:
+      - KeyName
+      - InstanceType
+      - SSHLocation
+      - OperatorEMail
+    
+    ParameterLabels:
+      KeyName:
+        default: SSH key name
+      OperatorEMail:
+        default: Operator email
+      PrivateSubnet1ID:
+        default: Private subnet 1 ID
+      PrivateSubnet2ID:
+        default: Private subnet 2 ID
+      PublicSubnet1ID:
+        default: Public subnet 1 ID
+      PublicSubnet2ID:
+        default: Public subnet 2 ID
+      VPCID:
+        default: VPC ID
+      InstanceType:
+        default: Workload servers instance type
+      SSHLocation:
+        default: Workload nodes SSH CIDR Block
+
 Parameters:
   InstanceType:
     Description: WebServer EC2 instance type
@@ -102,7 +141,7 @@ Parameters:
   VPCID:
     Description: 'ID of the VPC (e.g., vpc-0343606e)'
     Type: 'AWS::EC2::VPC::Id'
-    
+
 Mappings:
   AWSInstanceType2Arch:
     t1.micro:
@@ -248,6 +287,7 @@ Mappings:
       HVM64: ami-0a4eaf6c4454eda75
     cn-northwest-1:
       HVM64: ami-6b6a7d09
+      
 Resources:
   NotificationTopic:
     Type: 'AWS::SNS::Topic'
