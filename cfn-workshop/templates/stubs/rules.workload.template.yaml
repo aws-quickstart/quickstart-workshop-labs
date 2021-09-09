@@ -49,7 +49,6 @@ Metadata:
         default: Workload nodes SSH CIDR Block
       EnvType:
         default: Envrionment type
-
 Rules:
   prodInstanceType:
     RuleCondition: !Equals 
@@ -314,6 +313,7 @@ Mappings:
       HVM64: ami-0a4eaf6c4454eda75
     cn-northwest-1:
       HVM64: ami-6b6a7d09
+      
 Resources:
   NotificationTopic:
     Type: 'AWS::SNS::Topic'
