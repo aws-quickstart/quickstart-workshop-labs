@@ -8,6 +8,9 @@
           - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
             S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
+        BastionAMIOS: Ubuntu-Server-22.04-LTS-HVM
+        BastionInstanceType: m5.large
+        RemoteAccessCIDR: !Ref VPCCIDR
         KeyPairName:
           Ref: KeyPairName
         PublicSubnet1ID:
