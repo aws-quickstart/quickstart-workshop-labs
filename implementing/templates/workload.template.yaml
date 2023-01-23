@@ -1,6 +1,8 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   WebServer, NGINX in ASG behind ALB, License:
+   WebServer, NGINX in ASG behind ALB, License: Apache. (qs-1tqhohh85)
+Metadata:
+  cfn-lint: { config: { ignore_checks: [W9002, W9003, W9006, E9010] } }
 Parameters:
   InstanceType:
     Description: EC2 instance type
@@ -176,14 +178,14 @@ Resources:
               command: /etc/init.d/nginx start
     Properties:
       KeyName: !Ref KeyPairName
-      ImageId: !FindInMap 
+      ImageId: !FindInMap
         - AWSAMIRegionMap
         - !Ref 'AWS::Region'
         - US1604HVM
       InstanceType: !Ref InstanceType
       SecurityGroups:
         - !Ref WebServerSecurityGroup
-      UserData: !Base64 
+      UserData: !Base64
         'Fn::Sub':
           - >
             #!/bin/bash -x
@@ -331,10 +333,10 @@ Resources:
 Outputs:
   URL:
     Description: The URL of WebServer
-    Value: !Join 
+    Value: !Join
       - ''
       - - 'http://'
-        - !GetAtt 
+        - !GetAtt
           - ApplicationLoadBalancer
           - DNSName
 
