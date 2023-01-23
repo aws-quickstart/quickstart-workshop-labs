@@ -1,2 +1,2 @@
-# quickstart-workshop-lab
-Labs for QuickStart workshop
+# quickstart-workshop-labs
+Labs for AWS Partner Solution workshop
